@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #clock{
+                color:white;
+                position: absolute;
+                top:40%;
+                left:35%;
+                transform: translate(-50% -50%);
+                font-size: 100px;
+                text-shadow:  0 0 10px blue,
+                             0 0 20px blue,
+                             0 0 30px blue,
+                             0 0 50px blue;
+                             
+
+            }
+            body{
+                background-color: black;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="clock">
+                <h1 id="clock">13:12:45</h1>
+            </div>
+        </div>
+
+
+
+
+
+
+        <script>
+            function time(){
+                var date=new Date();
+                var hours= date.getHours();
+                var mins= date.getMinutes();
+                var sec =date.getSeconds();
+
+                if(hours=="24"){
+                    var hr = 12;
+                }
+                else if(hours =="12"){
+                    var hr =0;
+                }
+                else{
+                    var hr =hours%12;
+                }
+                if(hr<10){
+                    var hr = "0"+hr;
+                }
+                if(mins<10){
+                    var mins ="0"+mins;
+                }
+                if(sec<10){
+                    var sec ="0"+sec;
+                }
+                
+
+                var ampm =hr<12?"am":"pm";
+
+                var timed = hr+":"+mins+":"+sec+""+ampm;
+                document.getElementById("clock").innerText=timed;
+
+            }
+            setInterval(time,1000)
+            
+                 
+        
+        </script>
+    </body>
+</html>
